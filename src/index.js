@@ -1,6 +1,6 @@
 const { Client } = require("discord.js");
 const client = new Client();
-const { token, keyword } = require("./config");
+const { token, keyword, channel } = require("./config");
 
 const trimAndLowerContent = require("./utils/trimAndLowerContent");
 
@@ -17,10 +17,27 @@ async function handleMessage(msg) {
   // Bail if the command does not exist.
   if (!commands[flag]) return;
   // Pipe the message into the command.
-  commands[flag](msg);
+  const res = await commands[flag](msg);
+  // If the new flag has been selected, emit a 'newJobPost' event with the data
+  if (flag === "new") client.emit("newJobPost", res);
+}
+
+function handleNewJobPost({ answers, guild, username, discriminator }) {
+  // Data is the answers map returned from the new command
+  let response = `@${username}#${discriminator} has posted a new job.`;
+  const targetChannel = guild.channels.cache.find(
+    ({ name }) => name === channel
+  );
+  if (!targetChannel) console.error("Channel does not exist.");
+  for (let [key, value] of answers) {
+    response += "\n" + "```\n" + `${key}: ${value}` + "\n```";
+  }
+  targetChannel.send(response);
 }
 
 client.on("message", handleMessage);
+
+client.on("newJobPost", handleNewJobPost);
 
 client.on("ready", () => console.log(`${client.user.tag} logged in.`));
 
