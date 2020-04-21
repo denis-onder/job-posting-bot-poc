@@ -2,8 +2,9 @@ const { Client } = require("discord.js");
 const client = new Client();
 const { token, keyword } = require("./config");
 
-const sanitizeInput = ({ cleanContent }) =>
-  cleanContent.trim().replace(/\n/gim, " ").toLowerCase();
+const trimAndLowerContent = require("./utils/trimAndLowerContent");
+
+const sanitizeInput = ({ cleanContent }) => trimAndLowerContent(cleanContent);
 
 const getCommands = require("./commands");
 
