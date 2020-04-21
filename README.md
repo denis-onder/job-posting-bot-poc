@@ -2,6 +2,10 @@
 
 > This repository serves as a PoC for a module for the r/webdev Discord server's support bot.
 
+Acquire your token by creating an application/bot on the [Discord Developer Portal](https://discordapp.com/developers/applications).
+
+Invite your bot by visiting this URL [https://discordapp.com/oauth2/authorize?client_id=YOUR_TOKEN&scope=bot](https://discordapp.com/oauth2/authorize?client_id=YOUR_TOKEN&scope=bot)
+
 Keyword: `!post`
 
 Commands:
