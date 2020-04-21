@@ -1,0 +1,25 @@
+{
+  "name": "job-posting-bot-poc",
+  "version": "1.0.0",
+  "description": "Proof of concept for discord bot module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denis-onder/job-posting-bot-poc.git"
+  },
+  "keywords": [
+    "Discord.js"
+  ],
+  "author": "Denis Onder <denis_onder@protonmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denis-onder/job-posting-bot-poc/issues"
+  },
+  "homepage": "https://github.com/denis-onder/job-posting-bot-poc#readme",
+  "dependencies": {
+    "discord.js": "^12.2.0"
+  }
+}
