@@ -21,7 +21,9 @@ module.exports = {
   compensation: {
     body:
       "Please provide the amount that you are willing to pay for the project in USD `$`.",
-    validate: (answer) =>
+    validate: (
+      answer // Alert the mods from here if the user attempted breaking the equity rule
+    ) =>
       /^[1-9]\d*(((,\d{3}){1})?(\.\d{0,9})?)$/.test(
         parseFloat(answer.split("$").join("")).toFixed(2)
       ),
